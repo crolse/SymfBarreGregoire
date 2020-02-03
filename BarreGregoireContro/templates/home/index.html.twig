@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des Produits</h1>
+    <table class="table">
+        <tr>
+            <th>Référence</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Ean</th>
+            <th></th>
+        </tr>
+        {% for pro in produits %}
+            <tr>
+                <td>{{ pro.reference }}</td>
+                <td>{{ pro.nom }}</td>
+                <td>{{ pro.description }}</td>
+                <td>{{ pro.ean }}</td>
+                <td>
+                    <a href="{{ path("produit_modifier",{"id":pro.id}) }}"
+                       class="btn-btn-primary">
+                        <i class="far fa-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path("produit_supprimer",{"id":pro.id}) }}"
+                       class="btn-btn-primary red">
+                        <i class="far fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{  path("produit_ajouter") }}" class="btn btn-success">ajouter</a>
+
+{% endblock %}
